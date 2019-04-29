@@ -3,7 +3,7 @@ import { Alert, AppRegistry, Platform, StyleSheet, Text, TouchableHighlight, Tou
 
 export default class Touchables extends Component {
   _onPressButton() {
-    Alert.alert('You tapped the button!')
+    Alert.alert('You tapped the Tits!')
   }
 
   _onLongPressButton() {
