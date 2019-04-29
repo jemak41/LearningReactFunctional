@@ -1,0 +1,73 @@
+// - comment 1 line
+/* */ - comment multiple lines
+Component - a class that is extended when creating new class
+namespace - similar to class. groups items together 
+	//declare namespace React {
+	}
+importing a namespace/class:
+	//import {namespacename} from 'modulename'
+for loop:
+	for (var x in list){
+		do this
+	}
+<View> - <div>
+<Text> - <p>
+export default - exporting an entity. 1:1 for export default and  module
+props - short for properties. these are the properties that was passed by the parent class. unchangeable in the child component
+	//this.props.name = Greeting.props.name
+	//this is other term for the class 
+state - same w props but can changeable
+expo init - creates a directory for a project
+        //expo init projectname
+setState() - enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state
+if else - 
+	if (1) {
+	return 1
+	}
+	return null
+setInterval(alertFunc, 3000) - will perform the alertFunc function every 3 secs (3000 ms.)
+styles - 
+	import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+
+	const styles = StyleSheet.create({
+  		bigblue: {
+    			color: 'blue'
+			}
+		});
+	
+	<Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+=> - this is called an arrow function. this is similar to creating functions
+	function funcname(params) {
+		return params + 2;
+	}
+	
+	is the same with:
+	
+	var funcname = (params) => params + 2
+map() - creates a new list and will apply the function on every element on the called list
+	lis = ['a', 'b', 'c']
+	lis.map(a = a + '1')
+	['a1', 'b1', 'c1']
+<TextInput> - Accepts text input
+	<TextInput
+		onChangeText={(text) => this.setState({text})}
+	/>
+Displaying Basic Button:
+	import {Alert, Button} from 'react-native'
+	
+	export default class BasicButton extends Component {
+		onPress(){
+			Alert.alert('You tapped a button')
+		}
+		
+		render(){
+			return(
+				<View style.{styles.buttonContainer}>
+					<Button
+						onPress={this.onPress}
+						title='Press Me'
+					/>
+				</View>
+			);
+		}
+	}
