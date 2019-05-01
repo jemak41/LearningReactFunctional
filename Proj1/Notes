@@ -4,15 +4,12 @@ Component - a class that is extended when creating new class
 namespace - similar to class. groups items together 
 	//declare namespace React {
 	}
-importing a namespace/class:
-	//import {namespacename} from 'modulename'
 for loop:
 	for (var x in list){
 		do this
 	}
 <View> - <div>
 <Text> - <p>
-export default - exporting an entity. 1:1 for export default and  module
 props - short for properties. these are the properties that was passed by the parent class. unchangeable in the child component
 	//this.props.name = Greeting.props.name
 	//this is other term for the class 
@@ -36,7 +33,7 @@ styles -
 		});
 	
 	<Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
-=> - this is called an arrow function. this is similar to creating functions
+=> - this is called an arrow function. this is similar to creating functions: var funcname = (parameter) => parameter + 5 //no return and function keywords needed
 	function funcname(params) {
 		return params + 2;
 	}
@@ -95,3 +92,78 @@ FlatList - Unlike the more generic ScrollView, the FlatList only renders element
           renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
           keyExtractor={(item, index) => index}
         />
+let - Using let protects the value of the global variable:
+	var topic = "JavaScript"
+	if (topic) {
+	let topic = "React" console.log('block', topic)
+	}	
+	console.log('global', topic) //Javascript
+including a variable in a text:
+	<p>copyright ${new Date().getYear()} | The HTML5 Blog</p>
+	//<Text> for react native
+setting of default parameters:
+	function func(a="ass"){
+	console.log(`${a}`)
+	}
+typeof - typeof a //string
+	typeof func //function
+get the variables from a dictionary. This is called Desctructuring:
+	var sandwich = {
+		bread: "dutch crunch",
+        	meat: "tuna",
+          	cheese: "swiss",
+          	toppings: ["lettuce", "tomato", "mustard"]
+	}
+	var {bread, meat} = sandwich
+	console.log(bread, meat) // dutch crunch tuna
+Destructuring:
+	var [,,thirdResort] = ["Kirkwood", "Squaw", "Alpine"] 
+	console.log(thirdResort) // Alpine
+Object Literal Enhancement/Resctructuring:
+	var name = "Tallac" 
+	var elevation = 9738
+	var print = function() {
+		console.log(`Mt. ${this.name} is ${this.elevation} feet tall`)
+	}
+	var funHike = {name,elevation,print}
+	funHike.print() // Mt. Tallac is 9738 feet tall
+Object - Similar to Dictionary in Python
+Spread - ...:
+	var lakes = ["Donner", "Marlette", "Fallen Leaf", "Cascade"]
+	var [first, ...rest] = lakes
+	console.log(rest.join(", ")) // "Marlette, Fallen Leaf, Cascade"
+Classes:
+	class Vacation {
+	constructor(destination, length) { //Constructor is special function in the class declaration, which defines a function, that represents the class itsel.
+	this.destination = destination 
+	this.length = length
+	}
+	print() {
+	console.log(`${this.destination} will take ${this.length} days.`)
+	} }
+Initializing a Class:
+	const trip = new Vacation("Santiago, Chile", 7);
+	console.log(trip.print()); // Chile will take 7 days.
+Classes can also be extended. When a class is extended, the subclass inherits the properties and methods of the superclass. These properties and methods can be manipulated from here, but as a default, all will be inherited.
+Simple Inheritance:
+	class Expedition extends Vacation {
+	constructor(destination, length, gear) { 
+	super(destination, length) //super is from superclass (the one that was inherit)
+	this.gear = gear
+	}
+	print() {
+	super.print()
+	console.log(`Bring your ${this.gear.join(" and your ")}`)
+	} }
+export can be used to export any JavaScript type that will be consumed in another module.
+	export const print(message) => log(message, new Date()) 
+	export const log(message, timestamp) => console.log(`${timestamp.toString()}: ${message}`}
+Sometimes you may want to export only one variable from a module. In these cases you can use export default
+	const freel = new Expedition("Mt. Freel", 2, ["water", "snack"])
+	export default freel
+Modules that use export default are imported into a single variable:
+	import { print, log } from './text-helpers' 
+	import freel from './mt-freel'
+You can also import everything into a single variable using *:
+	import * as fns from './text-helpers
+
