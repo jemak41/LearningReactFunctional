@@ -1,0 +1,48 @@
+Higher-order functions - are functions that can manipulate other functions. They can take functions in as arguments, or return functions, or both. e.g. array.map, array.filter, array.reduce
+Callback Function - any function that is passed as an argument
+Currying - use of a function that returns another function
+	const userLogs = userName => message => console.log(`${userName} -> ${message}`)
+Recursion is a technique that involves creating functions that recall themselves. Use Recursion instead of loop when possible:
+	const countdown = (value, fn) => {
+ 	fn(value)
+ 	return (value > 0) ? countdown(value-1, fn) : value
+	}
+	countdown(10, value => console.log(value));
+	// 10
+	// 9
+	// 8
+	....
+	
+	Another ex:
+	var dan = {
+ 		type: "person",
+		data: {
+ 			gender: "male",
+ 			info: {
+ 				id: 22,
+ 				fullname: {
+ 					first: "Dan",
+ 					last: "Deacon"
+ 					}
+ 				}
+ 			}
+ 		}
+
+	deepPick("type", dan); // "person"
+	deepPick("data.info.fullname.first", dan); // "Dan"
+
+	const deepPick = (fields, object={}) => {
+ 		const [first, ...remaining] = fields.split(".")
+ 		return (remaining.length) ?
+ 			deepPick(remaining.join("."), object[first]) :
+ 			object[first]
+		}
+Composition - is to “generate a higher order function by combining simpler functions.”. This is 
+	const both = date => appendAMPM(civilianHours(date)) // pipes a value through two separate functions
+Functional Programming:
+	1. Keep data immutable.
+	2. Keep functions pure—accept at least one argument, return data or another function.
+	3. Use recursion over looping (wherever possible).
+React is the library for creating views. 
+ReactDOM is the library used to actually render the UI in the browser.
+DOM - HTML is simply a set of instructions that a browser follows when constructing the document object model, or DOM. The elements that make up an HTML document become DOM elements when the browser loads HTML and renders the user interface

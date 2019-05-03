@@ -9,3 +9,11 @@ fetch('https://mywebsite.com/endpoint/', {
     secondParam: 'yourOtherValue',
   }),
 });
+
+
+const compose = (...fns) =>
+    (arg) =>
+        fns.reduce(
+                (composed, f) => f(composed),
+            arg
+    ) 
