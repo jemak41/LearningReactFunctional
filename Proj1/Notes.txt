@@ -309,4 +309,5 @@ React Component - we can create a React component using React.createClass
         </ul>
     	</IngredientsList>
 this - keyword to refer to the component instance	
-	
+Stateless functional components are functions, not objects; therefore, they do not have a “this” scope. Stateless functional components are functions that take in properties and return a DOM element.
+
