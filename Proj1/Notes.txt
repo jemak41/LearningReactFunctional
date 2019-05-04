@@ -1,0 +1,312 @@
+// - comment 1 line
+/* */ - comment multiple lines
+Component - a class that is extended when creating new class
+namespace - similar to class. groups items together 
+	//declare namespace React {
+	}
+for loop:
+	for (var x in list){
+		do this
+	}
+<View> - <div>
+<Text> - <p>
+props - short for properties. these are the properties that was passed by the parent class. unchangeable in the child component
+	//this.props.name = Greeting.props.name
+	//this is other term for the class 
+state - same w props but can changeable
+expo init - creates a directory for a project
+        //expo init projectname
+setState() - enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state
+if else - 
+	if (1) {
+	return 1
+	}
+	return null
+setInterval(alertFunc, 3000) - will perform the alertFunc function every 3 secs (3000 ms.)
+styles - 
+	import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+
+	const styles = StyleSheet.create({
+  		bigblue: {
+    			color: 'blue'
+			}
+		});
+	
+	<Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+=> - this is called an arrow function. this is similar to creating functions: var funcname = (parameter) => (return) //no return and function keywords needed
+	function funcname(params) {
+		return params + 2;
+	}
+	
+	is the same with:
+	
+	var funcname = (params) => params + 2
+=> - arrow function part 2:
+        const func = par1 => par2 => par1 + par2
+map() - creates a new list and will apply the function on every element on the called list
+	lis = ['a', 'b', 'c']
+	lis.map(a = a + '1')
+	['a1', 'b1', 'c1']
+<TextInput> - Accepts text input
+	<TextInput
+		onChangeText={(text) => this.setState({text})}
+	/>
+Displaying Basic Button:
+	import {Alert, Button} from 'react-native'
+	
+	export default class BasicButton extends Component {
+		onPress(){
+			Alert.alert('You tapped a button')
+		}
+		
+		render(){
+			return(
+				<View style.{styles.buttonContainer}>
+					<Button
+						onPress={this.onPress}
+						title='Press Me'
+					/>
+				</View>
+			);
+		}
+	}
+<TouchableHighlight onPress={this._onPressButton} underlayColor="white">
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>TouchableHighlight</Text>
+          </View>
+<ScrollView>
+          <Text style={{fontSize:96}}>Scroll me plz</Text>
+	</ScrollView>
+FlatList - Unlike the more generic ScrollView, the FlatList only renders elements that are currently showing on the screen, not all the elements at once.
+	<FlatList
+          data={[
+            {key: 'Devin'},
+            {key: 'Jackson'},
+			]}
+          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+    />
+<SectionList
+          sections={[
+            {title: 'D', data: ['Devin']},
+            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
+        />
+let - Using let protects the value of the global variable:
+	var topic = "JavaScript"
+	if (topic) {
+	let topic = "React" console.log('block', topic)
+	}	
+	console.log('global', topic) //Javascript
+including a variable in a text:
+	<p>copyright ${new Date().getYear()} | The HTML5 Blog</p>
+	//<Text> for react native
+setting of default parameters:
+	function func(a="ass"){
+	console.log(`${a}`)
+	}
+typeof - typeof a //string
+	typeof func //function
+get the variables from a dictionary. This is called Desctructuring:
+	var sandwich = {
+		bread: "dutch crunch",
+        	meat: "tuna",
+          	cheese: "swiss",
+          	toppings: ["lettuce", "tomato", "mustard"]
+	}
+	var {bread, meat} = sandwich
+	console.log(bread, meat) // dutch crunch tuna
+Destructuring:
+	var [,,thirdResort] = ["Kirkwood", "Squaw", "Alpine"] 
+	console.log(thirdResort) // Alpine
+Object Literal Enhancement/Resctructuring:
+	var name = "Tallac" 
+	var elevation = 9738
+	var print = function() {
+		console.log(`Mt. ${this.name} is ${this.elevation} feet tall`)
+	}
+	var funHike = {name,elevation,print}
+	funHike.print() // Mt. Tallac is 9738 feet tall
+Object - Similar to Dictionary in Python
+Spread - ...:
+	var lakes = ["Donner", "Marlette", "Fallen Leaf", "Cascade"]
+	var [first, ...rest] = lakes
+	console.log(rest.join(", ")) // "Marlette, Fallen Leaf, Cascade"
+Classes:
+	class Vacation {
+	constructor(destination, length) { //Constructor is special function in the class declaration, which defines a function, that represents the class itsel.
+	this.destination = destination 
+	this.length = length
+	}
+	print() {
+	console.log(`${this.destination} will take ${this.length} days.`)
+	} }
+Initializing a Class:
+	const trip = new Vacation("Santiago, Chile", 7);
+	console.log(trip.print()); // Chile will take 7 days.
+Classes can also be extended. When a class is extended, the subclass inherits the properties and methods of the superclass. These properties and methods can be manipulated from here, but as a default, all will be inherited.
+Simple Inheritance:
+	class Expedition extends Vacation {
+	constructor(destination, length, gear) { 
+	super(destination, length) //super is from superclass (the one that was inherit)
+	this.gear = gear
+	}
+	print() {
+	super.print()
+	console.log(`Bring your ${this.gear.join(" and your ")}`)
+	} }
+export can be used to export any JavaScript type that will be consumed in another module.
+	export const print(message) => log(message, new Date()) 
+	export const log(message, timestamp) => console.log(`${timestamp.toString()}: ${message}`}
+Sometimes you may want to export only one variable from a module. In these cases you can use export default
+	const freel = new Expedition("Mt. Freel", 2, ["water", "snack"])
+	export default freel
+Modules that use export default are imported into a single variable:
+	import { print, log } from './text-helpers' 
+	import freel from './mt-freel'
+You can also import everything into a single variable using *:
+	import * as fns from './text-helpers
+In JavaScript, functions are variables
+	const obj = {
+	message: "They can be added to objects like variables", 
+	log(message) {
+            console.log(message)
+        	}
+	}	
+    	obj.log(obj.message)
+We can also add functions to arrays in JavaScript
+	const messages = ["They can be inserted into arrays", 
+	message => console.log(message),
+	"like variables",
+        message => console.log(message)
+    	]
+	messages[1](messages[0]) // They can be inserted into arrays 
+	messages[3](messages[2]) // like variables
+Functions can be sent to other functions as arguments, just like other variables:
+	const insideFn = logger => 
+	logger("They can be sent to other functions as arguments"); //parameter
+    	insideFn(message => console.log(message)) //message => console.log(message)) is the function that has been passed to insideFn
+    	// They can be sent to other functions as arguments
+They can also be returned from other functions, just like variables:
+	var createScream = function(logger) { 
+		return function(message) {
+            		logger(message.toUpperCase() + "!!!")
+        		}
+		}
+	const scream = createScream(message => console.log(message))
+    	scream('scream invokes that returned function')
+    	// SCREAM INVOKES THAT RETURNED FUNCTION!!!
+"a === b" a and b must be the same value and also the same type for it to evaluate to true.
+Declarative programming - naming of types(functions, classes) are self descriptive
+Immutability - This is how immutable data works in an application. Instead of changing the original data structures, we build changed copies of those data structures and use them instead.
+DOM - The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document.
+Arrays/List important methods functions:
+	const schools = [ "Yorktown", "Washington & Lee", "Wakefield"]
+	console.log( schools.join(", ") ) // "Yorktown, Washington & Lee, Wakefield"
+	const wSchools = schools.filter(school => school[0] === "W") // // ["Washington & Lee", "Wakefield"]
+	const highSchools = schools.map(school => `${school} High School`) 
+		//  Yorktown High School
+    		//  Washington & Lee High School
+    		//  Wakefield High School
+	const schools = { "Yorktown": 10, "Washington & Lee": 2, "Wakefield": 5}
+		const schoolArray = Object.keys(schools).map(key => ({ //Object.keys returns an array of school names
+			name: key,
+                	wins: schools[key]
+           		})
+        	)
+	The reduce() method is used to apply a function to each element in the array to reduce the array to a single value.:
+		const max = ages.reduce(
+			(max, value) => (value > max) ? value : max, 0
+			)
+The map function can produce an array of objects, values, arrays, other functions—any Java‐ Script type.
+Shorthand if/else:
+	(1==2)? 'yes' : 'no'
+{} - start and end of function (optional in arrow function). it is also used for separating code into blocks within the function
+Callback Function - any function that is passed as an argument
+Currying - use of a function that returns another function
+        const userLogs = userName => message => console.log(`${userName} -> ${message}`)
+Recursion is a technique that involves creating functions that recall themselves. Use Recursion instead of loop when possible:
+        const countdown = (value, fn) => {
+        fn(value)
+        return (value > 0) ? countdown(value-1, fn) : value
+        }
+        countdown(10, value => console.log(value));^M
+        // 10
+        // 9
+        // 8
+        ....
+
+        Another ex:
+        var dan = {
+                type: "person",
+                data: {
+                        gender: "male",
+                        info: {
+                                id: 22,
+                                fullname: {
+                                        first: "Dan",
+                                        last: "Deacon"
+                                        }
+                                }
+                        }
+                }
+
+        deepPick("type", dan); // "person"
+        deepPick("data.info.fullname.first", dan); // "Dan"^M
+
+        const deepPick = (fields, object={}) => {
+                const [first, ...remaining] = fields.split(".")
+                return (remaining.length) ?
+                        deepPick(remaining.join("."), object[first]) :
+                        object[first]
+                }
+Composition - is to <93>generate a higher order function by combining simpler functions.<94>. This is
+        const both = date => appendAMPM(civilianHours(date)) // pipes a value through two separate functions
+Functional Programming:
+        1. Keep data immutable.
+        2. Keep functions pure<97>accept at least one argument, return data or another function.
+        3. Use recursion over looping (wherever possible).
+React is the library for creating views.
+AJAX - brought us the single-page application, or SPA. Since browsers could request and load tiny bits of data using AJAX, entire web applications could now run out of a single page and rely on JavaScript to update the user 
+React Element - are the instructions for how the browser DOM should be created.
+	React.createElement("h1", null, "Baked Salmon") // represent an h1 using React.createElement
+	<h1>Baked Salmon</h1> //During rendering, React will convert this element to an actual DOM element
+	
+	React.createElement("h1",{id: "recipe-0", 'data-type': "title"}, "Baked Salmon")
+	<h1 data-reactroot id="recipe-0" data-type="title">Baked Salmon</h1>
+ReactDOM is where we will find the render method as well as the renderToString and renderToStaticMarkup methods that are used on the server.
+ReactDOM.render - 	
+	var dish = React.createElement("h1", null, "Baked Salmon") 
+	ReactDOM.render(dish, document.getElementById('react-container'))
+	
+	<body>
+		<div id="react-container">
+			<h1>Baked Salmon</h1> 
+		</div>
+	</body>
+All of the DOM rendering functionality in React has been moved to ReactDOM because we can use React to build native applications as well. The browser is just one target for React.That’s all you need to do. You create an element, and then you render it to the DOM. In the next section, we’ll get an understanding of how to use props.children.
+React Component - we can create a React component using React.createClass
+	const IngredientsList = React.createClass({ displayName: "IngredientsList",
+	render() {
+	return React.createElement("ul", {"className": "ingredients"}, React.createElement("li", null, "1 lb Salmon"), React.createElement("li", null, "1 cup Pine Nuts"), React.createElement("li", null, "2 cups Butter Lettuce"), React.createElement("li", null, "1 Yellow Squash"), React.createElement("li", null, "1/2 cup Olive Oil"), React.createElement("li", null, "3 cloves of Garlic")
+	) }
+	})
+	
+	const list = React.createElement(IngredientsList, null, null)
+
+	ReactDOM.render(
+  		list,
+  		document.getElementById('react-container')
+	)
+
+	Here is the created element:
+	<IngredientsList>
+	<ul className="ingredients">
+	<li>1 lb Salmon</li>
+	<li>1 cup Pine Nuts</li> <li>2 cups Butter Lettuce</li> <li>1 Yellow Squash</li> <li>1/2 cup Olive Oil</li> <li>3 cloves of Garlic</li>
+        </ul>
+    	</IngredientsList>
+this - keyword to refer to the component instance	
+	
