@@ -309,4 +309,19 @@ React Component - we can create a React component using React.createClass
         </ul>
     	</IngredientsList>
 this - keyword to refer to the component instance	
+Stateless functional components are functions, not objects; therefore, they do not have a “this” scope. 
+Factory - Another way to create a React element 
+	React.DOM.h1(null, "Baked Salmon")
+JSX - An alternative to typing out verbose React.createElement calls is JSX, a JavaScript extension that allows us to define React elements using syntax that looks similar toHTML.
+className - Since class is a reserved word in JavaScript, className is used to define the class attribute instead:
+	<h1 className="fancy">Baked Salmon</h1>
+JavaScript expressions are wrapped in curly braces{}
+	<h1>{this.props.title}</h1>
+	<input type="checkbox" defaultChecked={false} />
+JSX is JavaScript, so you can incorporate JSX directly inside of JavaScript functions.
+	<ul>
+		{this.props.ingredients.map((ingredient, i) => <li key={i}>{ingredient}</li>
+		)}
+	</ul>	
+Babel - a way to convert our fancy source code into something that the browser can interpret. However, not all browsers support the latest ES6 and ES7 syntax, and no browser supports JSX syntax. This process is called transpiling, and it is what Babel is designed to do.
 	
