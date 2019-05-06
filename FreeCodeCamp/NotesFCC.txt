@@ -1,0 +1,1 @@
+DOM - a tree where the HTML element is the most root part of the tree
