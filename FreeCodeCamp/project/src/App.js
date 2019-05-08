@@ -1,19 +1,7 @@
 import React from "react"
-import Footer from "./Footer"
+import Joke from "./Joke"
 
-function App(){
-    return(
-        <div>
-            <h1>JEMAK GWAPO</h1>
-            <p>blah blah</p>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
-            <Footer/>
-        </div>
-    )
-}
+const App = () =>
+    <Joke/>
 
 export default App

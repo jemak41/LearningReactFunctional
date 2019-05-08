@@ -1,1 +1,40 @@
 DOM - a tree where the HTML element is the most root part of the tree
+Template Strings - embedding javascript strings and expressions together inside a `` (back tick)
+	`string text`
+
+	`string text line 1
+ 	string text line 2`
+
+	`string text ${expression} string text`
+	
+	regular JS, JSX:
+	const App = () => <h1 style={styles}> Number {x} + {y} is equal to {x + y} </h1>	
+	
+	template strings:
+	const App = () => <h1 style={styles}>{`Number ${x} + ${y} is equal to ${x + y}`}</h1>	
+
+JSX - JSX is a preprocessor step that adds XML syntax to JavaScript. Just like XML, JSX tags have a tag name, attributes, and children. Looks like HTML
+	- JSX properties are expected to be javascript object
+		
+		const App = () => <h1 style={color: "#FF8C00"}> Number {x} + {y} is equal to {x + y} </h1>
+		
+		for style properties should be in camelcase background-color > backgroundColor
+			- defaut will be in pixels
+	
+	- JSX should be entered after the return statement 
+		
+		const J = () => //insert JSX here 
+		function J (){return(//Insert JSX here
+			)}
+Functional Component - accepts prop as an argument. Example on passing an argument to a functional component:
+	const ContactCard = (props) => 
+    		<div className="contact-card">
+        		<h2>{props.firstname}</h2>
+        		<h3>{props.lastname}</h3>       
+    		</div>
+
+	const App = () =>
+		<div>
+			<ContactCard firstname="First" lastname="Last" /> //First and Last were passed as props.firstname and lastname
+		</div>
+
