@@ -1,9 +1,8 @@
 import React from "react"
 
-const Joke = (props) =>
+const Joke = () =>
     <div>
-        
+        <h1></h1>
     </div>
-
 
 export default Joke
