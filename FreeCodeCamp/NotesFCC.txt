@@ -37,4 +37,16 @@ Functional Component - accepts prop as an argument. Example on passing an argume
 		<div>
 			<ContactCard firstname="First" lastname="Last" /> //First and Last were passed as props.firstname and lastname
 		</div>
-
+Conditional on props:
+	<h1 style={{display: props.question ? "block" : "none"}}> //if props.question exist then block if not then none
+	<h1 style={{display: !props.question && "none"}}> //if no props.question then none
+Inserting a variable in an arrow function:
+	const App = () => {
+		const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} joke={joke.joke}/>)
+		return(
+			<div>
+				{jokeComponents}
+			</div>
+		)
+	}
+	

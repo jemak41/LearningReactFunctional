@@ -1,8 +1,9 @@
 import React from "react"
 
-const Joke = () =>
+
+const Joke = (props) =>
     <div>
-        <h1></h1>
+        <p>Question is: {props.question} The punchline is: {props.joke}</p>
     </div>
 
 export default Joke
