@@ -42,11 +42,71 @@ Conditional on props:
 	<h1 style={{display: !props.question && "none"}}> //if no props.question then none
 Inserting a variable in an arrow function:
 	const App = () => {
-		const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} joke={joke.joke}/>)
+		const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} joke={joke.joke}/>)//key us required for parent-child rel.
 		return(
 			<div>
 				{jokeComponents}
 			</div>
 		)
 	}
+Inserting Javascript inside a JSX:
+	<input type="checkbox" checked={props.completed}></input>
+State - a data that component maintains. value can change. adding a state in component needs constructor.
+Constructor - a place where you initialize some value. first thing need to do w constructor is make a call to super()
+Super - goes to parent class in the example case its Component:
+	class App extends Component{
+		constructor(){
+			super() //used to access members of Component class
+			this.state = {} //adds state in the App component
+		}
+	}
 	
+	Another Example:
+	class App extends Component {
+    		constructor(){
+        		super()
+        		this.state = {name: "Asshole", age: 5}
+    		}
+    		render(){
+        		return (
+            			<div>
+                			<h1>{this.state.name}</h1>
+                			<h3>{this.state.age} years old</h3>
+            			</div>
+        		)
+    			}    
+		}
+Events - changes state. e.g. onClick, onChange, mouseOver etc. this can be render in JSX
+	<input type="checkbox" onClick={() => console.log("Clicked")} />
+When creating a class/component you can insert as many method as you like:
+	class App extends Component{
+	constructor()
+	}
+	method1(){
+	}
+	method2(){
+	}
+	render(){
+		this.method1 //need to reference the this to use component methods
+	}
+	}
+setState - any time you want to change the state you use this method.
+	- came from Component class
+binding method:
+	class App extends React.Component {
+    		constructor() {
+        		super()
+        		this.state = {}
+        this.handleClick = this.handleClick.bind(this) //this is where the binding happens. binding is needed when using setState method
+    	}
+    
+    	handleClick() {
+		this.setState(prevState => { //setting the state using the previous state value
+			return{
+				count: prevState + 1
+			}
+		})
+        }
+prevState - the value/data of the previous state
+componentDidMount - will be run when a component ran the first time and show up in the screen.
+
