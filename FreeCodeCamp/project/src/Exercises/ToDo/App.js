@@ -22,10 +22,10 @@ class App extends Component{
             return{
                 todos : updatedTodos
             }
+                
+            
         })
     }
-
-
     render(){
         const todosComponents = this.state.todos.map(todo => 
             <TodosItem 
@@ -33,7 +33,7 @@ class App extends Component{
                 id={todo.id}
                 text={todo.text} 
                 completed={todo.completed}
-                handleChange={this.handleChange} 
+                handleChange={this.handleChange}
             />)
     
         return(
