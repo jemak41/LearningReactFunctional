@@ -125,4 +125,12 @@ componentDidMount - will be run when a component ran the first time and show up 
 Conditional rendering - the App component where you should add your condition
 	- if the thing on the left is true then it return the thing on the right. if the thing on the left is false then it is automatically false
 		true && false
-
+fetch example :
+	fetch("http://swapi.co/api/people/1")
+		.then(response => response.json())
+		.then(data => {
+		   this.setState({
+			   character: data, 
+			   loading: false
+		})
+	})
