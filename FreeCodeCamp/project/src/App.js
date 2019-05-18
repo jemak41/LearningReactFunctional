@@ -7,6 +7,13 @@ class App extends Component{
             firstName: ""
         }
     }
+
+    handleChange(){
+        this.setState({
+            
+        })
+    }
+
     render(){
         return(
             <form>
